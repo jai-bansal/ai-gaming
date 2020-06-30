@@ -17,7 +17,8 @@
     # There are no other players available to play against.
     # The site asks "How quickly can you create a bot that is never beaten
     # (but, unfortunately, will never win)?"
-    # So I think this is the best solution
+    # So I think this is the best solution.
+    # Watching some of the games, there are definitely possible improvements to my bot, but they wouldn't result in winning games.
     
 
 botName='switch-1'
