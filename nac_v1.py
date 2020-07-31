@@ -3,7 +3,6 @@
 # Specifically, it borrows functions for choosing a random move, blocking an opponent's 2-in-a-row,
 # and winning the game if you have a 2-in-a-row.
 
-
 # Bot Strategy:
     # Do the following every turn:
         # Check for winning move
