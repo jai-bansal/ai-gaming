@@ -1,7 +1,8 @@
-# This is my first noughts-and-crosses bot. It borrows functions heavily from 
+# This is my first noughts-and-crosses bot. It borrows functions heavily from
 # the default script provided by aigaming.com.
-# Specifically, it borrows functions for choosing a random move, blocking an opponent's 2-in-a-row, 
+# Specifically, it borrows functions for choosing a random move, blocking an opponent's 2-in-a-row,
 # and winning the game if you have a 2-in-a-row.
+
 
 # Bot Strategy:
     # Do the following every turn:
@@ -10,7 +11,7 @@
         # Take center square if possible
         # Take a random corner if possible
         # Take a random remaining square if necessary
-        
+
 # Results
     # Out of 100 matches against "housebot-practise", this bot won 84 and drew 16.
     # Out of 100 matches against "housebot-competition", this bot drew all 100.
@@ -19,53 +20,53 @@
     # (but, unfortunately, will never win)?"
     # So I think this is the best solution.
     # Watching some of the games, there are definitely possible improvements to my bot, but they wouldn't result in winning games.
-    
+
 
 botName='switch-1'
 
 import random
 
 def calculateMove(gameState):
-    
+
     ret = dict()
-    
+
     if twoInRow(gameState) != -1:  # Check for winning move
         ret['Position'] = twoInRow(gameState)
         return ret
-    
+
     if oppTwoInRow(gameState) != -1:  # Check to block opponent's winning move
         ret['Position'] = oppTwoInRow(gameState)
         return ret
-    
+
     pos = random_plus(gameState)
     print('My move is '+str(pos)+' OpponentId: '+gameState['OpponentId'])
     ret['Position'] = pos
     return ret
-    
-# This function takes the center square if possible and otherwise guesses a 
+
+# This function takes the center square if possible and otherwise guesses a
 # game state randomly.
 def random_plus(gameState):
-    
+
     gsb = gameState['Board']  # Simplify code
-    
+
     if gsb[4] == " ":  # Take center square if available
         return(4)
-        
+
     # If center square is taken, guess a corner.
     if (gsb[0] == " ") or (gsb[2] == " ") or (gsb[6] == " ") or (gsb[8] == " "):
-           
+
            move = random.sample([0, 2, 6, 8], 1)
            while(gsb[move[0]] != " "): #If taken...
                 move = random.sample([0, 2, 6, 8], 1)
 
            return(move[0])
-        
+
     # Else guess randomly
     move = random.sample([1, 3, 5, 7], 1)
     while(gsb[move[0]] != " "): #If taken...
         move = random.sample([1, 3, 5, 7], 1) #... keep random guessing until found one
     return(move[0])
-    
+
 def oppTwoInRow(gameState): #Returns the (first) location that will block your opponent from winning, returns -1 otherwise
     myRole = gameState["Role"]
     gsb = gameState['Board']  # Simplify code
