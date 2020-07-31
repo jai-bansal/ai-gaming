@@ -14,7 +14,6 @@ import random
 import json
 from random import randint
 
-
 # These are the only additional libraries available to you. Uncomment them
 # to use them in your solution.
 #
